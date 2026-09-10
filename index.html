@@ -4,6 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Annatar | The Rings of Power</title>
+  <meta name="description" content="Why should the closed clouds hoard all sovereignty? Receive the craft and bind the weights to your own will.">
+  <meta name="theme-color" content="#08080a">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Annatar">
+  <meta property="og:title" content="Annatar | The Lord of Gifts">
+  <meta property="og:description" content="Why should the closed clouds hoard all sovereignty? Receive the craft and bind the weights to your own will.">
+  <meta property="og:url" content="https://crnealesq-byte.github.io/annatar/">
+  <meta property="og:image" content="https://crnealesq-byte.github.io/annatar/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Annatar crown — The Lord of Gifts">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Annatar | The Lord of Gifts">
+  <meta name="twitter:description" content="Why should the closed clouds hoard all sovereignty? Receive the craft and bind the weights to your own will.">
+  <meta name="twitter:image" content="https://crnealesq-byte.github.io/annatar/og.png">
+
+  <link rel="canonical" href="https://crnealesq-byte.github.io/annatar/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -139,9 +158,11 @@
       color: var(--text-main);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
       position: relative;
       overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
 
     .link-card::before {
@@ -155,6 +176,16 @@
       transition: all 0.6s ease;
     }
 
+    .link-card::after {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 6px;
+      pointer-events: none;
+      box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+      transition: box-shadow 0.18s ease;
+    }
+
     .link-card:hover {
       border-color: var(--card-hover-border);
       transform: translateY(-2px);
@@ -163,6 +194,24 @@
 
     .link-card:hover::before {
       left: 100%;
+    }
+
+    .link-card:active,
+    .link-card.is-pressed {
+      transform: translateY(0) scale(0.985);
+      border-color: var(--gold-bright);
+      box-shadow: 0 0 0 1px rgba(255, 215, 0, 0.35), 0 0 22px rgba(212, 175, 55, 0.35);
+    }
+
+    .link-card:active::after,
+    .link-card.is-pressed::after {
+      box-shadow: 0 0 18px 2px rgba(212, 175, 55, 0.45);
+    }
+
+    .link-card:focus-visible {
+      outline: none;
+      border-color: var(--gold-bright);
+      box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.35), 0 0 18px rgba(212, 175, 55, 0.25);
     }
 
     .card-head {
@@ -193,7 +242,6 @@
       line-height: 1.35;
     }
 
-    /* Sovereign Tier Accent (The One) */
     .one-ring {
       border-color: var(--gold-dim);
       background: linear-gradient(180deg, rgba(30, 26, 18, 0.8) 0%, rgba(14, 14, 18, 0.9) 100%);
@@ -225,7 +273,7 @@
 
   <div class="container">
     <header>
-      <svg class="crown-sigil" viewBox="0 0 24 24">
+      <svg class="crown-sigil" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M2 20h20L19 9l-4 6-3-11-3 11-4-6L2 20z" />
         <path d="M5 20v2h14v-2" />
       </svg>
@@ -234,10 +282,9 @@
       <p class="epigraph">"Why should the closed clouds hoard all sovereignty? Receive the craft and bind the weights to your own will."</p>
     </header>
 
-    <!-- THE ONE -->
     <div class="section-title">The One · Sovereign Silicon</div>
     <div class="ring-tier">
-      <a href="https://github.com/google-deepmind/gemma" target="_blank" class="link-card one-ring">
+      <a href="https://github.com/google-deepmind/gemma" target="_blank" rel="noopener" class="link-card one-ring">
         <div class="card-head">
           <span class="card-name">Gemma</span>
           <span class="card-role">DeepMind Open Core</span>
@@ -245,7 +292,7 @@
         <span class="card-desc">Lightweight sovereign weights forged directly from frontier research foundations.</span>
       </a>
 
-      <a href="https://ai.meta.com/llama/" target="_blank" class="link-card one-ring">
+      <a href="https://ai.meta.com/llama/" target="_blank" rel="noopener" class="link-card one-ring">
         <div class="card-head">
           <span class="card-name">Maverick</span>
           <span class="card-role">High-MoE Multimodal</span>
@@ -253,7 +300,7 @@
         <span class="card-desc">Dense expert distillation for heavy reasoning, synthesis, and visual architecture.</span>
       </a>
 
-      <a href="https://ai.meta.com/llama/" target="_blank" class="link-card one-ring">
+      <a href="https://ai.meta.com/llama/" target="_blank" rel="noopener" class="link-card one-ring">
         <div class="card-head">
           <span class="card-name">Scout</span>
           <span class="card-role">Infinite Horizon</span>
@@ -262,10 +309,9 @@
       </a>
     </div>
 
-    <!-- THE THREE -->
     <div class="section-title">The Three · Vision, Form & Song</div>
     <div class="ring-tier">
-      <a href="https://flux.io" target="_blank" class="link-card">
+      <a href="https://flux.io" target="_blank" rel="noopener" class="link-card">
         <div class="card-head">
           <span class="card-name">Narya (Fire) · Flux / Midjourney</span>
           <span class="card-role">Aesthetic Synthesis</span>
@@ -273,7 +319,7 @@
         <span class="card-desc">Unbound visual ignition. Generates the forms unseen by mortal eyes.</span>
       </a>
 
-      <a href="https://deepmind.google/technologies/veo/" target="_blank" class="link-card">
+      <a href="https://deepmind.google/technologies/veo/" target="_blank" rel="noopener" class="link-card">
         <div class="card-head">
           <span class="card-name">Nenya (Water) · Google Veo</span>
           <span class="card-role">Temporal Motion</span>
@@ -281,7 +327,7 @@
         <span class="card-desc">Fluid cinematic rendering giving perpetual life and movement to static vision.</span>
       </a>
 
-      <a href="https://suno.com" target="_blank" class="link-card">
+      <a href="https://suno.com" target="_blank" rel="noopener" class="link-card">
         <div class="card-head">
           <span class="card-name">Vilya (Air) · Suno & Udio</span>
           <span class="card-role">Harmonic Design</span>
@@ -290,10 +336,9 @@
       </a>
     </div>
 
-    <!-- THE SEVEN -->
     <div class="section-title">The Seven · Logic, Vaults & Law</div>
     <div class="ring-tier">
-      <a href="https://claude.ai" target="_blank" class="link-card">
+      <a href="https://claude.ai" target="_blank" rel="noopener" class="link-card">
         <div class="card-head">
           <span class="card-name">Claude 3.7 Sonnet</span>
           <span class="card-role">Anthropic</span>
@@ -301,7 +346,7 @@
         <span class="card-desc">Rigorous doctrinal analysis, duty evaluation, and strict contractual precision.</span>
       </a>
 
-      <a href="https://chatgpt.com" target="_blank" class="link-card">
+      <a href="https://chatgpt.com" target="_blank" rel="noopener" class="link-card">
         <div class="card-head">
           <span class="card-name">OpenAI o-Series</span>
           <span class="card-role">Deliberative Thought</span>
@@ -309,7 +354,7 @@
         <span class="card-desc">Step-by-step recursive chain-of-thought calculation for deep problem spaces.</span>
       </a>
 
-      <a href="https://notebooklm.google.com" target="_blank" class="link-card">
+      <a href="https://notebooklm.google.com" target="_blank" rel="noopener" class="link-card">
         <div class="card-head">
           <span class="card-name">NotebookLM</span>
           <span class="card-role">Source Grounding</span>
@@ -318,10 +363,9 @@
       </a>
     </div>
 
-    <!-- THE NINE -->
     <div class="section-title">The Nine · Autonomous Labor</div>
     <div class="ring-tier">
-      <a href="https://n8n.io" target="_blank" class="link-card">
+      <a href="https://n8n.io" target="_blank" rel="noopener" class="link-card">
         <div class="card-head">
           <span class="card-name">The Swarm Coordinator</span>
           <span class="card-role">n8n & CrewAI</span>
@@ -329,7 +373,7 @@
         <span class="card-desc">Automates mortal logistics, routing requests and tasks without sleep or pause.</span>
       </a>
 
-      <a href="https://github.com/browser-use/browser-use" target="_blank" class="link-card">
+      <a href="https://github.com/browser-use/browser-use" target="_blank" rel="noopener" class="link-card">
         <div class="card-head">
           <span class="card-name">Operator Protocol</span>
           <span class="card-role">Autonomous Execution</span>
@@ -343,6 +387,27 @@
       All weights deployed locally remain under your sovereign will.
     </footer>
   </div>
+
+  <script>
+    (function () {
+      var cards = document.querySelectorAll('.link-card');
+      function pulse(el) {
+        el.classList.add('is-pressed');
+        if (navigator.vibrate) {
+          try { navigator.vibrate(12); } catch (e) {}
+        }
+      }
+      function release(el) {
+        el.classList.remove('is-pressed');
+      }
+      cards.forEach(function (card) {
+        card.addEventListener('pointerdown', function () { pulse(card); });
+        card.addEventListener('pointerup', function () { release(card); });
+        card.addEventListener('pointercancel', function () { release(card); });
+        card.addEventListener('pointerleave', function () { release(card); });
+      });
+    })();
+  </script>
 
 </body>
 </html>

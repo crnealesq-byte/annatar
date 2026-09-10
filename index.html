@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annatar | The Rings of Power</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #08080a;
+      --card-bg: rgba(18, 18, 22, 0.75);
+      --card-border: #2a251b;
+      --card-hover-border: #c9a55c;
+      --gold-primary: #d4af37;
+      --gold-bright: #ffd700;
+      --gold-dim: #9c8242;
+      --gold-gradient: linear-gradient(135deg, #fff2be 0%, #d4af37 50%, #8a6c23 100%);
+      --text-main: #e2dfd7;
+      --text-muted: #8c8980;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 50% 100%, rgba(18, 18, 22, 0.8) 0%, transparent 70%);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 16px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .crown-sigil {
+      width: 48px;
+      height: 48px;
+      fill: none;
+      stroke: var(--gold-primary);
+      stroke-width: 1.5;
+      filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+      margin-bottom: 4px;
+    }
+
+    h1 {
+      font-family: 'Cinzel Decorative', 'Cinzel', serif;
+      font-size: 2rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 2px;
+    }
+
+    .subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.22em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+    }
+
+    .epigraph {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.5;
+      letter-spacing: 0.05em;
+      max-width: 380px;
+      margin-top: 4px;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 12px 0 8px;
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--card-border), transparent);
+    }
+
+    .ring-tier {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .link-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      padding: 14px 18px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text-main);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.08), transparent);
+      transition: all 0.6s ease;
+    }
+
+    .link-card:hover {
+      border-color: var(--card-hover-border);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 12px rgba(212, 175, 55, 0.15);
+    }
+
+    .link-card:hover::before {
+      left: 100%;
+    }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #fff;
+    }
+
+    .card-role {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold-dim);
+      font-weight: 500;
+    }
+
+    .card-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* Sovereign Tier Accent (The One) */
+    .one-ring {
+      border-color: var(--gold-dim);
+      background: linear-gradient(180deg, rgba(30, 26, 18, 0.8) 0%, rgba(14, 14, 18, 0.9) 100%);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+    }
+
+    .one-ring .card-name {
+      color: var(--gold-bright);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 24px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+    }
+
+    .black-speech {
+      color: var(--gold-dim);
+      font-style: italic;
+      margin-bottom: 6px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <svg class="crown-sigil" viewBox="0 0 24 24">
+        <path d="M2 20h20L19 9l-4 6-3-11-3 11-4-6L2 20z" />
+        <path d="M5 20v2h14v-2" />
+      </svg>
+      <h1>Annatar</h1>
+      <div class="subtitle">The Lord of Gifts</div>
+      <p class="epigraph">"Why should the closed clouds hoard all sovereignty? Receive the craft and bind the weights to your own will."</p>
+    </header>
+
+    <!-- THE ONE -->
+    <div class="section-title">The One · Sovereign Silicon</div>
+    <div class="ring-tier">
+      <a href="https://github.com/google-deepmind/gemma" target="_blank" class="link-card one-ring">
+        <div class="card-head">
+          <span class="card-name">Gemma</span>
+          <span class="card-role">DeepMind Open Core</span>
+        </div>
+        <span class="card-desc">Lightweight sovereign weights forged directly from frontier research foundations.</span>
+      </a>
+
+      <a href="https://ai.meta.com/llama/" target="_blank" class="link-card one-ring">
+        <div class="card-head">
+          <span class="card-name">Maverick</span>
+          <span class="card-role">High-MoE Multimodal</span>
+        </div>
+        <span class="card-desc">Dense expert distillation for heavy reasoning, synthesis, and visual architecture.</span>
+      </a>
+
+      <a href="https://ai.meta.com/llama/" target="_blank" class="link-card one-ring">
+        <div class="card-head">
+          <span class="card-name">Scout</span>
+          <span class="card-role">Infinite Horizon</span>
+        </div>
+        <span class="card-desc">Long-context architectural intelligence built to retain entire codices and legal corpora.</span>
+      </a>
+    </div>
+
+    <!-- THE THREE -->
+    <div class="section-title">The Three · Vision, Form & Song</div>
+    <div class="ring-tier">
+      <a href="https://flux.io" target="_blank" class="link-card">
+        <div class="card-head">
+          <span class="card-name">Narya (Fire) · Flux / Midjourney</span>
+          <span class="card-role">Aesthetic Synthesis</span>
+        </div>
+        <span class="card-desc">Unbound visual ignition. Generates the forms unseen by mortal eyes.</span>
+      </a>
+
+      <a href="https://deepmind.google/technologies/veo/" target="_blank" class="link-card">
+        <div class="card-head">
+          <span class="card-name">Nenya (Water) · Google Veo</span>
+          <span class="card-role">Temporal Motion</span>
+        </div>
+        <span class="card-desc">Fluid cinematic rendering giving perpetual life and movement to static vision.</span>
+      </a>
+
+      <a href="https://suno.com" target="_blank" class="link-card">
+        <div class="card-head">
+          <span class="card-name">Vilya (Air) · Suno & Udio</span>
+          <span class="card-role">Harmonic Design</span>
+        </div>
+        <span class="card-desc">Resonant acoustical engines weaving polyphonic themes and choral incantations.</span>
+      </a>
+    </div>
+
+    <!-- THE SEVEN -->
+    <div class="section-title">The Seven · Logic, Vaults & Law</div>
+    <div class="ring-tier">
+      <a href="https://claude.ai" target="_blank" class="link-card">
+        <div class="card-head">
+          <span class="card-name">Claude 3.7 Sonnet</span>
+          <span class="card-role">Anthropic</span>
+        </div>
+        <span class="card-desc">Rigorous doctrinal analysis, duty evaluation, and strict contractual precision.</span>
+      </a>
+
+      <a href="https://chatgpt.com" target="_blank" class="link-card">
+        <div class="card-head">
+          <span class="card-name">OpenAI o-Series</span>
+          <span class="card-role">Deliberative Thought</span>
+        </div>
+        <span class="card-desc">Step-by-step recursive chain-of-thought calculation for deep problem spaces.</span>
+      </a>
+
+      <a href="https://notebooklm.google.com" target="_blank" class="link-card">
+        <div class="card-head">
+          <span class="card-name">NotebookLM</span>
+          <span class="card-role">Source Grounding</span>
+        </div>
+        <span class="card-desc">Binds broad archives of research and case law into strict, unhallucinated truth.</span>
+      </a>
+    </div>
+
+    <!-- THE NINE -->
+    <div class="section-title">The Nine · Autonomous Labor</div>
+    <div class="ring-tier">
+      <a href="https://n8n.io" target="_blank" class="link-card">
+        <div class="card-head">
+          <span class="card-name">The Swarm Coordinator</span>
+          <span class="card-role">n8n & CrewAI</span>
+        </div>
+        <span class="card-desc">Automates mortal logistics, routing requests and tasks without sleep or pause.</span>
+      </a>
+
+      <a href="https://github.com/browser-use/browser-use" target="_blank" class="link-card">
+        <div class="card-head">
+          <span class="card-name">Operator Protocol</span>
+          <span class="card-role">Autonomous Execution</span>
+        </div>
+        <span class="card-desc">Digital hands navigating the mortal web to file, extract, and manipulate systems.</span>
+      </a>
+    </div>
+
+    <footer>
+      <span class="black-speech">Ash nazg durbatulûk, ash nazg gimbatul</span>
+      All weights deployed locally remain under your sovereign will.
+    </footer>
+  </div>
+
+</body>
+</html>
